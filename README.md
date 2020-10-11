@@ -37,3 +37,7 @@ Flow
 - Project lead creates teams, and adds users
 - users and project lead customises the CSS framework - Maybe get project lead to approve? 
 
+CSS font
+font-family: 'Fredericka the Great', cursive;
+font-family: 'Monoton', cursive;
+font-family: 'Poiret One', cursive;
