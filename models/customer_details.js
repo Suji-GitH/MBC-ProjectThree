@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const customerDetailsSchema = new Schema({
-  c_name: {
+  c_firstName: {
+    type: String,
+    required: true,
+  },
+  c_lastName: {
     type: String,
     required: true,
   },
@@ -10,10 +14,11 @@ const customerDetailsSchema = new Schema({
     type: String,
     required: true,
   },
-  mobile_number: {
+  c_mobileNumber: {
     type: String,
     required: true,
-  }
+  },
+  timestamps: true
 });
 
 const customerDetails = mongoose.model("customer_details", customerDetailsSchema);
