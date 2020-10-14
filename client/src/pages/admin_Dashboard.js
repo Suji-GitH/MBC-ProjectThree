@@ -1,16 +1,15 @@
 import React from "react";
-// import Hero from "../components/Hero";
-// import Container from "../components/Container";
-// import Row from "../components/Row";
-// import Col from "../components/Col";
+import Header from "../components/BO_Layout/Header";
+import Footer from "../components/BO_Layout/Footer";
 
-function About() {
+function Dashboard(){
   return (
-    <div>
-        This is Admin Dashboard Page with graphs
-        <button>Create theme</button>
-    </div>
+    <>
+    <Header />
+    <Footer />
+    </>
   );
+
 }
 
-export default About;
+export default Dashboard;
