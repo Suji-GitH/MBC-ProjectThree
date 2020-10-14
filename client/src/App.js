@@ -7,12 +7,11 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-// import Navbar from "./components/layout/Navbar";
-// import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import adminDashboard from "./pages/admin_Dashboard";
+import userApp from "./pages/user_Application";
 
 // import "./App.css";
 
@@ -42,10 +41,10 @@ class App extends Component {
         <Router>
           <div className="App">
             <Route exact path="/" component={Register} />
-            {/* <Route exact path="/register" component={Register} /> */}
             <Route exact path="/login" component={Login} />
+            <Route exact path="/user_Application" component={userApp} />
             <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/adminDashboard" component={adminDashboard} />
             </Switch>
           </div>
         </Router>

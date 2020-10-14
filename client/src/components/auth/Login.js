@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
-import HeroLanding from "../Layout/HeroLanding";
+import HeroLanding from "../BO_Layout/HeroLanding";
+import Footer from "../BO_Layout/Footer";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -61,13 +62,13 @@ class Login extends Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/adminDashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/adminDashboard");
     }
 
     if (nextProps.errors) {
@@ -148,6 +149,7 @@ class Login extends Component {
             </Paper>
           </Grid>
         </Grid>
+        <Footer />
       </div>
       </>
     );

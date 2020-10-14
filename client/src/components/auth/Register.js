@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-import HeroLanding from "../Layout/HeroLanding";
+import HeroLanding from "../BO_Layout/HeroLanding";
+import Footer from "../BO_Layout/Footer";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+
 
 const authStyles = {
   grid: {
@@ -63,7 +65,7 @@ class Register extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/adminDashboard");
     }
   }
 
@@ -185,6 +187,7 @@ class Register extends Component {
             </Paper>
           </Grid>
         </Grid>
+        <Footer />
     </>
     );
   }
