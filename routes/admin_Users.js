@@ -9,8 +9,8 @@ const passport = require("passport");
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
 
-// Load Business Owner model
-const BusinessOwner = require("../models/Business_Owner");
+// Load business owner models
+const Business_Owner = require("../models/Business_Owner");
 
 // @route POST /admin_Users/register
 // @desc Register Business Owner
@@ -25,11 +25,11 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  BusinessOwner.findOne({ email: req.body.email }).then(businessOwner => {
+  Business_Owner.findOne({ email: req.body.email }).then(businessOwner => {
     if (businessOwner) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
-      const newBuinessOwner = new BusinessOwner({
+      const newBusinessOwner = new Business_Owner({
         business_vendor: req.body.business_vendor,
         email: req.body.email,
         password: req.body.password
@@ -37,10 +37,10 @@ router.post("/register", (req, res) => {
 
       // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newBuinessOwner.password, salt, (err, hash) => {
+        bcrypt.hash(newBusinessOwner.password, salt, (err, hash) => {
           if (err) throw err;
-          newBuinessOwner.password = hash;
-          newBuinessOwner
+          newBusinessOwner.password = hash;
+          newBusinessOwner
             .save()
             .then(businessOwner => res.json(businessOwner))
             .catch(err => console.log(err));
@@ -67,7 +67,7 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   // Find Business Owner by email
-  BusinessOwner.findOne({ email }).then(businessOwner => {
+  Business_Owner.findOne({ email }).then(businessOwner => {
     // Check if business owner exists
     if (!businessOwner) {
       return res.status(404).json({ emailnotfound: "Email not found" });

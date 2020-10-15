@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const adminUsers = require("./routes/admin_Users.js");
+const customerForm = require("./routes/customerForm");
 
 const MongoStore = require("connect-mongo")(session);
 
@@ -42,8 +43,7 @@ require("./passport/setup.js")(passport);
 
 // Routes
 app.use("/api/adminUsers", adminUsers);
-// app.use(require("./routes/apiRoutes.js"));
-// app.use(require("./routes/htmlRoutes.js"));
+app.use("/api/customerForm", customerForm);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);

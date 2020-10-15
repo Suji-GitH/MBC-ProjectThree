@@ -29,10 +29,20 @@ const BusinessOwnerSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "app_theme"
   },
-  customer_details: {
-    type: Schema.Types.ObjectId,
-    ref: "customer_details"
-  }
+  customer_details: [ 
+      {
+      type: Schema.Types.ObjectId,
+      ref: "customer_details"
+    }
+  ]
+});
+
+BusinessOwnerSchema.post('save', (vendor) => {
+console.log(vendor);
+if(!vendor.QR_link) {
+  vendor.QR_link = `/business/${vendor._id}/`;
+  vendor.save();
+}
 });
 
 const BusinessOwner = mongoose.model("BusinessOwner", BusinessOwnerSchema);
