@@ -11,7 +11,9 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import adminDashboard from "./pages/admin_Dashboard";
+import userList from "./pages/admin_ListUser";
 import userApp from "./pages/user_Application";
+import themeBuilder from "./pages/admin_CreateTheme";
 
 // import "./App.css";
 
@@ -44,7 +46,9 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/user_Application" component={userApp} />
             <Switch>
-              <PrivateRoute exact path="/adminDashboard" component={adminDashboard} />
+              <PrivateRoute exact path="/Dashboard" component={adminDashboard} />
+              <PrivateRoute exact path="/CustomerList" component={userList} />
+              <PrivateRoute exact path="/ThemeBuilder" component={themeBuilder} />
             </Switch>
           </div>
         </Router>

@@ -6,7 +6,7 @@ function userApp(){
   return (
     <>
     <Header />
-    {/* <CustomerForm /> */}
+    <CustomerForm />
     </>
   );
 

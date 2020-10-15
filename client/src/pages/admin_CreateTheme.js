@@ -1,15 +1,16 @@
 import React from "react";
-// import Hero from "../components/Hero";
-// import Container from "../components/Container";
-// import Row from "../components/Row";
-// import Col from "../components/Col";
+import Header from "../components/BO_Layout/Header";
+import Footer from "../components/BO_Layout/Footer";
 
-function About() {
+
+function ThemeBuilder() {
   return (
-    <div>
-        This is page to create the theme for the app.
-    </div>
+    <>
+      <Header />
+  
+      <Footer />
+    </>
   );
 }
 
-export default About;
+export default ThemeBuilder;
