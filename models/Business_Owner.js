@@ -37,13 +37,13 @@ const BusinessOwnerSchema = new Schema({
   ]
 });
 
-// BusinessOwnerSchema.post('save', (vendor) => {
-// console.log(vendor);
-// if(!vendor.QR_link) {
-//   vendor.QR_link = `/business/${vendor._id}/theme/${vendor.app_theme._id}`;
-//   vendor.save();
-// }
-// });
+BusinessOwnerSchema.post('save', (vendor) => {
+console.log(vendor);
+if(!vendor.QR_link) {
+  vendor.QR_link = `/business/${vendor._id}/`;
+  vendor.save();
+}
+});
 
 const BusinessOwner = mongoose.model("BusinessOwner", BusinessOwnerSchema);
 

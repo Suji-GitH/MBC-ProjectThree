@@ -7,6 +7,7 @@ const passport = require("passport");
 const adminUsers = require("./routes/admin_Users.js");
 const customerForm = require("./routes/customerForm");
 const businessVendor = require("./routes/businessVendor");
+const mAppTheme = require("./routes/mAppTheme");
 
 const MongoStore = require("connect-mongo")(session);
 
@@ -46,6 +47,7 @@ require("./passport/setup.js")(passport);
 app.use("/api/adminUsers", adminUsers);
 app.use("/api/customerForm", customerForm);
 app.use("/api/businessVendor", businessVendor);
+app.use("/api/mAppTheme", mAppTheme);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);

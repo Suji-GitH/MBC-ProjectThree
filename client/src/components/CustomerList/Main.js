@@ -87,48 +87,6 @@ class CustomerDirectory extends Component {
 
     }
 
-    //sort customers alphabetically by some name key:
-    sortNum = customers => {
-
-        const sortType = this.state.sortType;
-
-        if (sortType === 'desc' || sortType === '') {
-            //sort alpha ascending order:
-            customers.sort(this.dynamicSort("date"));
-            this.setState({
-                sortedCustomers: customers,
-                sortType: 'asc'
-            });
-        } else if (sortType === 'asc') {
-            //sort alpha descending order:
-            customers.sort(this.dynamicSort("-date"));
-            this.setState({
-                sortedCustomers: customers,
-                sortType: 'desc'
-            });
-        }
-
-    }
-
-    //reorders customers list alphabetically
-    dynamicSort = property => {
-
-        var sortOrder = 1;
-
-        if(property[0] === "-") {
-            sortOrder = -1;
-            property = property.substr(1);
-        }
-
-        return function (a,b) {
-            if (sortOrder === -1) {
-                return b[property].localeCompare(a[property]);
-            } else {
-                return a[property].localeCompare(b[property]);
-            }        
-        }
-    }
-
     render() {
         const { user } = this.props.auth;
 
@@ -140,24 +98,10 @@ class CustomerDirectory extends Component {
             customersList = this.state.customers;
         }
 
-        let sortArrow;
-
-        const sortState = this.state.sortType;
-
-        if (sortState === 'asc') {
-            //down arrow
-            sortArrow = <span>&#9660;</span>;
-        } else if (sortState === 'desc') {
-            //up arrow
-            sortArrow = <span>&#9650;</span>;
-        } else {
-            sortArrow = '';
-        }
-
         return(
             <>
                 <SearchBar filterByDate={this.filterByDate} query={this.state.query} />
-                <CustomerTable customers={customersList} sortNum={this.sortNum} sortArrow={sortArrow}  />
+                <CustomerTable customers={customersList} />
             </>
         );
     }

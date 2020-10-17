@@ -44,11 +44,19 @@ class App extends Component {
           <div className="App">
             <Route exact path="/" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/user_Application" component={userApp} />
+            <Route path="/business/:businessId" component={userApp} />
             <Switch>
-              <PrivateRoute exact path="/Dashboard" component={adminDashboard} />
+              <PrivateRoute
+                exact
+                path="/Dashboard"
+                component={adminDashboard}
+              />
               <PrivateRoute exact path="/CustomerList" component={userList} />
-              <PrivateRoute exact path="/ThemeBuilder" component={themeBuilder} />
+              <PrivateRoute
+                exact
+                path="/ThemeBuilder"
+                component={themeBuilder}
+              />
             </Switch>
           </div>
         </Router>

@@ -30,9 +30,17 @@ class CustomerTable extends Component {
     }
 
     render(props) {
+
+        const tableStyle = {
+            border: "solid 3px gold",
+            margin: "2em",
+            display: "block",
+            borderStyle: "dashed"
+        }
+
         
         return (
-            <table className="table table-bordered table-striped">
+            <table style={tableStyle}>
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -41,8 +49,6 @@ class CustomerTable extends Component {
                         <th scope="col">Mobile</th>
                         <th scope="col">Email</th>
                         <th scope="col">Visited Date</th>
-                        <th scope="col" className="clickable" title="Sort Date" 
-                            onClick={() => this.props.sortDate(this.props.customer)}>Visited Date {this.props.sortArrow}</th>
                     </tr>
                 </thead>
                 <tbody>
