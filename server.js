@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const adminUsers = require("./routes/admin_Users.js");
 const customerForm = require("./routes/customerForm");
+const businessVendor = require("./routes/businessVendor");
 
 const MongoStore = require("connect-mongo")(session);
 
@@ -44,6 +45,7 @@ require("./passport/setup.js")(passport);
 // Routes
 app.use("/api/adminUsers", adminUsers);
 app.use("/api/customerForm", customerForm);
+app.use("/api/businessVendor", businessVendor);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);

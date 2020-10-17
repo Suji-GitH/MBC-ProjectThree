@@ -41,3 +41,5 @@ CSS font
 font-family: 'Fredericka the Great', cursive;
 font-family: 'Monoton', cursive;
 font-family: 'Poiret One', cursive;
+
+user application url http://localhost:3000/business/%7Bid%7D/theme/%7BthemeId%7D/

@@ -5,7 +5,7 @@ const customersController = require("../controller/customersController");
 // Matches with "/api/customerForm/:id"
 router
   .route("/:id")
-  .get(customersController.findAll)
+  .get(customersController.findAllCustomer)
   .post(customersController.create)
   .delete(customersController.remove);
 

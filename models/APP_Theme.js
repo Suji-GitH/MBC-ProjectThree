@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const appThemeSchema = new Schema({
   t_logo: {
-    type: String,
-    required: true,
+    data: Buffer,
+    contentType: String
   },
   t_style: {
     type: String,

@@ -63,7 +63,7 @@ class Dashboard extends Component {
                         <Link
                             style={headerStyles.link}
                             tag={Link}
-                            to="/AboutMe"
+                            to="/Dashboard"
                         >
                             Dashboard
                         </Link>
@@ -71,7 +71,7 @@ class Dashboard extends Component {
                         <Link 
                             style={headerStyles.link}
                             tag={Link}
-                            to="/Portfolio"
+                            to="/ThemeBuilder"
                         >
                             Theme Builder
                         </Link>
@@ -79,7 +79,7 @@ class Dashboard extends Component {
                         <Link
                             style={headerStyles.link}
                             tag={Link}
-                            to="/Contact"
+                            to="/CustomerList"
                         >
                             Contact List
                         </Link>

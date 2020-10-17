@@ -2,10 +2,17 @@ const db = require("../models");
 
 // Defining methods for the customer Controller
 module.exports = {
-  findAll: function(req, res) {
-    // db.Customer_Details
+  findVendorDetails: function(req, res) {
     db.Business_Owner
-      // .find({})
+      .findById({ _id : req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {
+        console.error(err)
+        res.status(422).json(err)
+      });
+  },
+  findAllCustomer: function(req, res) {
+    db.Business_Owner
       .findById({ _id : req.params.id})
       .populate('customer_details')
       .select('customer_details -_id')

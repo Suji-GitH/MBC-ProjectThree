@@ -1,15 +1,19 @@
 import React from "react";
-// import Hero from "../components/Hero";
-// import Container from "../components/Container";
-// import Row from "../components/Row";
-// import Col from "../components/Col";
+import Header from "../components/BO_Layout/Header";
+import Footer from "../components/BO_Layout/Footer";
+import ListGrid from "../components/CustomerList/Main";
 
-function About() {
+
+
+function ListUser() {
+
   return (
-    <div>
-        This page is list the users who signed the form
-    </div>
+    <>
+      <Header />
+      <ListGrid />
+      <Footer />
+    </>
   );
-}
+};
 
-export default About;
+export default ListUser;

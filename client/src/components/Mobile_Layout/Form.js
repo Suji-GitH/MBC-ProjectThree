@@ -1,100 +1,151 @@
-// import React from 'react';
-// import {Link} from 'react-router-dom';
-// import IconButton from '@material-ui/core/IconButton';
-// import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
+import React, { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { BlockPicker } from 'react-color'
+import Tippy from '@tippyjs/react'
 
-// function Form() {
+function Form() {
+  const [selectedBackgroundColor, setSelectedBackgroundColor] = useState('#ccc');
+  const [selectedBtnColor, setSelectedBtnColor] = useState('#ccc');
+  const [selectedBtnTxtColor, setSelectedBtnTxtColor] = useState('black');
 
-//   const infoStyle = {
-//     position: "absolute",
-//     top: "15px",
-//     padding: "1em",
-//     right: "20px"
-//   };
-  
-//   return (
-//     <>
-//         <form noValidate onSubmit={this.onSubmit}>
-//                 {/* Business Name */}
-//                 <div style={authStyles.input}>
-//                 <TextField 
-//                 onChange={this.onChange}
-//                 value={this.state.business_vendor}
-//                 error={errors.business_vendor}
-//                 id="business_vendor"
-//                 type="text"
-//                 label="Business Name" 
-//                 variant="outlined"
-//                 className={classnames("", {
-//                   invalid: errors.business_vendor
-//                 })}
-//                  />
-//                 <span style={{color: "crimson"}}>
-//                   {errors.business_vendor}
-//                 </span>
-//                 </div>
-//                 {/* Email */}
-//                 <div style={authStyles.input}>
-//                 <TextField 
-//                 onChange={this.onChange}
-//                 value={this.state.email}
-//                 error={errors.email}
-//                 id="email"
-//                 type="email"
-//                 label="Email" 
-//                 variant="outlined"
-//                 className={classnames("", {
-//                   invalid: errors.email
-//                 })}
-//                  />
-//                 <span style={{color: "crimson"}}>
-//                 {errors.email}
-//                 </span>
-//                 </div>
-//                 {/* Password */}
-//                 <div style={authStyles.input}>
-//                 <TextField 
-//                 onChange={this.onChange}
-//                 value={this.state.password}
-//                 error={errors.password}
-//                 id="password"
-//                 type="password"
-//                 label="Password" 
-//                 variant="outlined"
-//                 className={classnames("", {
-//                   invalid: errors.password
-//                 })}
-//                  />
-//                 <span style={{color: "crimson"}}>
-//                   {errors.password}
-//                 </span>
-//                 </div>
-//                 {/* Confirm Password */}
-//                 <div style={authStyles.input}>
-//                 <TextField 
-//                 onChange={this.onChange}
-//                 value={this.state.password2}
-//                 error={errors.password2}
-//                 id="password2"
-//                 type="password"
-//                 label="Confirm Password" 
-//                 variant="outlined"
-//                 className={classnames("", {
-//                   invalid: errors.password2
-//                 })}
-//                  />
-//                 <span style={{color: "crimson"}}>
-//                   {errors.password2}
-//                 </span>
-//                 </div>
+    const mobileAppStyles = {
+        form: {
+          backgroundColor: `${selectedBackgroundColor}`,
+          height: "100vh"
+        },
+        formLayout: {
+            textAlign: "center",
+            margin: "5em 1em 0"
+        },
+        input: {
+            margin: "1em",
+            display: "grid"
+        },
+        buttonLayout: {
+            margin: "4em 2em 0 1em",
+            display: "grid"
+        },
+        button: {
+          backgroundColor: `${selectedBtnColor}`,
+          color: `${selectedBtnTxtColor}`
+      }
+      };
+    
+  return (
+    <div style={mobileAppStyles.form} >
+{/* style={{ backgroundColor: selectedColor }} */}
+      <Tippy interactive={true} placement={'bottom'} content={
+        <BlockPicker
+          color={selectedBackgroundColor}
+          onChangeComplete={color => setSelectedBackgroundColor(color.hex)}
+        />
+      }>
+        <button>Select Background Color</button>
+
+      </Tippy>
+
+      <Tippy interactive={true} placement={'bottom'} content={
+        <BlockPicker
+          color={selectedBtnColor}
+          onChangeComplete={color => setSelectedBtnColor(color.hex)}
+        />
+      }>
+        <button>Select Button Color</button>
+
+      </Tippy>
+
+      <Tippy interactive={true} placement={'bottom'} content={
+        <BlockPicker
+          color={selectedBtnTxtColor}
+          onChangeComplete={color => setSelectedBtnTxtColor(color.hex)}
+        />
+      }>
+        <button>Select Button Text Color</button>
+
+      </Tippy>
+
+        <form style={mobileAppStyles.formLayout}>
+        {/* noValidate onSubmit={this.onSubmit} */}
+                {/* Last Name */}
+                <div style={mobileAppStyles.input}>
+                <TextField 
+                // onChange={this.onChange}
+                // value={this.state.c_firstName}
+                // error={errors.c_firstName}
+                id="c_firstName"
+                type="text"
+                label="First Name" 
+                variant="outlined"
+                // className={classnames("", {
+                //   invalid: errors.c_firstName
+                // })}
+                 />
+                {/* <span style={{color: "crimson"}}>
+                  {errors.c_firstName}
+                </span> */}
+                </div>
+                {/* Last Name */}
+                <div style={mobileAppStyles.input}>
+                <TextField 
+                // onChange={this.onChange}
+                // value={this.state.c_lastName}
+                // error={errors.c_lastName}
+                id="c_lastName"
+                type="text"
+                label="Last Name" 
+                variant="outlined"
+                // className={classnames("", {
+                //   invalid: errors.c_lastName
+                // })}
+                 />
+                {/* <span style={{color: "crimson"}}>
+                  {errors.c_lastName}
+                </span> */}
+                </div>
+                {/* Email */}
+                <div style={mobileAppStyles.input}>
+                <TextField 
+                // onChange={this.onChange}
+                // value={this.state.c_email}
+                // error={errors.c_email}
+                id="c_email"
+                type="email"
+                label="Email" 
+                variant="outlined"
+                // className={classnames("", {
+                //   invalid: errors.c_email
+                // })}
+                 />
+                {/* <span style={{color: "crimson"}}>
+                {errors.c_email}
+                </span> */}
+                </div>
+                {/* Mobile */}
+                <div style={mobileAppStyles.input}>
+                <TextField 
+                // onChange={this.onChange}
+                // value={this.state.c_mobileNumber}
+                // error={errors.c_mobileNumber}
+                id="c_mobileNumber"
+                type="c_mobileNumber"
+                label="Mobile Number" 
+                variant="outlined"
+                // className={classnames("", {
+                //   invalid: errors.c_mobileNumber
+                // })}
+                 />
+                {/* <span style={{color: "crimson"}}>
+                  {errors.c_mobileNumber}
+                </span> */}
+                </div>
                 
-//                 <div style={authStyles.button}>
-//                 <Button variant="contained" type="submit">Register</Button>
-//                 <Link style={authStyles.link} tag={Link} to="/login">Already have an account? Login</Link>
-//                 </div>
-//         </form>
-//     </>
-//   );
-// }
+                <div style={mobileAppStyles.buttonLayout}>
+                <Button style={mobileAppStyles.button} variant="contained" type="submit">Submit</Button>
+                </div>
+        </form>
+    </div>
+  );
+}
 
-// export default Form;
+export default Form;
