@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import { TwitterPicker } from "react-color";
 import QR from "../QRcode/QRcode";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import SnackBar from "../SnackBar/SnackBar";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -70,8 +72,9 @@ function ThemeGrid({
   );
   const [selectedBtnColor, setSelectedBtnColor] = useState("#ccc");
   const [selectedBtnTxtColor, setSelectedBtnTxtColor] = useState("black");
+  const [themeStoredSuccessfully, setThemeStoredSuccessfully] = useState(false);
   const [logo, setLogo] = useState();
-
+  const [qrLink, setQRLink] = useState();
   const mobileAppStyles = {
     headerLayout: {
       backgroundColor: `${selectedBackgroundColor}`,
@@ -101,10 +104,16 @@ function ThemeGrid({
 
   const saveTheme = async () => {
     try {
-      await API.saveTheme(id, {
+      const data = await API.saveTheme(id, {
         t_logo: logo,
         t_style: JSON.stringify(mobileAppStyles),
       });
+      const { QR_link } = data;
+      debugger;
+      if (QR_link) {
+        setQRLink(QR_link);
+        setThemeStoredSuccessfully(true);
+      }
     } catch (err) {
       console.error("Opps! : ", err);
     }
@@ -136,6 +145,12 @@ function ThemeGrid({
   return (
     <>
       <Grid container spacing={0} style={dashboardStyles.mainGrid}>
+        {themeStoredSuccessfully ? (
+          <SnackBar show>
+            Yay! Your theme was stored successfully! Let's{" "}
+            <Link to={qrLink}>check it out here</Link>
+          </SnackBar>
+        ) : null}
         <Grid item xs={4}>
           <Paper style={dashboardStyles.qrGrid} elevation={3}>
             <h3 style={dashboardStyles.header}>Contact Form - QR Code:</h3>

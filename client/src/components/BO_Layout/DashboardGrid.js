@@ -94,7 +94,7 @@ function DashboardGrid({
           timeOfDay,
           visitors: frequencyMap[timeOfDay] || 0,
         }));
-        // console.log("dataForTheGraph: ", dataForTheGraph);
+        console.log("dataForTheGraph: ", dataForTheGraph);
         setCustomerData(dataForTheGraph);
       } catch (err) {
         console.error(err);

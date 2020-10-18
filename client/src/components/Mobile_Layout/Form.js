@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Formik } from "formik";
+import SnackBar from "../SnackBar/SnackBar";
+import API from "../../utils/API";
 
 function Form({
   auth: {
@@ -8,113 +13,138 @@ function Form({
   },
   theme,
 }) {
-  /* 
-  const mobileAppStyles = {
-    form: {
-      backgroundColor: `${selectedBackgroundColor}`,
-      height: "100vh",
-    },
-    formLayout: {
-      textAlign: "center",
-      margin: "5em 1em 0",
-    },
-    input: {
-      margin: "1em",
-      display: "grid",
-    },
-    buttonLayout: {
-      margin: "4em 2em 0 1em",
-      display: "grid",
-    },
-    button: {
-      backgroundColor: `${selectedBtnColor}`,
-      color: `${selectedBtnTxtColor}`,
-    },
-  }; */
-
+  const [showSuccess, setShowSuccess] = useState(false);
   return (
-    <form style={theme.form}>
-      {/* noValidate onSubmit={this.onSubmit} */}
-      {/* Last Name */}
-      <div style={theme.input}>
-        <TextField
-          // onChange={this.onChange}
-          // value={this.state.c_firstName}
-          // error={errors.c_firstName}
-          id="c_firstName"
-          type="text"
-          label="First Name"
-          variant="outlined"
-          // className={classnames("", {
-          //   invalid: errors.c_firstName
-          // })}
-        />
-        {/* <span style={{color: "crimson"}}>
-                  {errors.c_firstName}
-                </span> */}
-      </div>
-      {/* Last Name */}
-      <div style={theme.input}>
-        <TextField
-          // onChange={this.onChange}
-          // value={this.state.c_lastName}
-          // error={errors.c_lastName}
-          id="c_lastName"
-          type="text"
-          label="Last Name"
-          variant="outlined"
-          // className={classnames("", {
-          //   invalid: errors.c_lastName
-          // })}
-        />
-        {/* <span style={{color: "crimson"}}>
-                  {errors.c_lastName}
-                </span> */}
-      </div>
-      {/* Email */}
-      <div style={theme.input}>
-        <TextField
-          // onChange={this.onChange}
-          // value={this.state.c_email}
-          // error={errors.c_email}
-          id="c_email"
-          type="email"
-          label="Email"
-          variant="outlined"
-          // className={classnames("", {
-          //   invalid: errors.c_email
-          // })}
-        />
-        {/* <span style={{color: "crimson"}}>
-                {errors.c_email}
-                </span> */}
-      </div>
-      {/* Mobile */}
-      <div style={theme.input}>
-        <TextField
-          // onChange={this.onChange}
-          // value={this.state.c_mobileNumber}
-          // error={errors.c_mobileNumber}
-          id="c_mobileNumber"
-          type="c_mobileNumber"
-          label="Mobile Number"
-          variant="outlined"
-          // className={classnames("", {
-          //   invalid: errors.c_mobileNumber
-          // })}
-        />
-        {/* <span style={{color: "crimson"}}>
-                  {errors.c_mobileNumber}
-                </span> */}
-      </div>
+    <>
+      {showSuccess ? (
+        <SnackBar show>Woot! User details stored successfully</SnackBar>
+      ) : null}
+      <Formik
+        initialValues={{
+          c_firstName: "",
+          c_lastName: "",
+          c_email: "",
+          c_mobileNumber: "",
+        }}
+        validate={({ c_firstName, c_lastName, c_email, c_mobileNumber }) => {
+          const errors = {};
+          if (!c_firstName) {
+            errors.c_firstName = "Required!";
+          }
+          if (!c_lastName) {
+            errors.c_lastName = "Required!";
+          }
+          if (!c_email) {
+            errors.c_email = "Required";
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(c_email)
+          ) {
+            errors.c_email = "Invalid email address";
+          }
+          if (!c_mobileNumber) {
+            errors.c_mobileNumber = "Required!";
+          }
+          return errors;
+        }}
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            const data = await API.saveCustomerDetails(id, values);
+            setShowSuccess(true);
+            setSubmitting(false);
+          } catch (error) {}
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          /* and other goodies */
+        }) => (
+          <form style={theme.form} onSubmit={handleSubmit}>
+            <div style={theme.input}>
+              <TextField
+                id="c_firstName"
+                name="c_firstName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.c_firstName}
+                type="text"
+                label="First Name"
+                variant="outlined"
+                error={errors.c_firstName && touched.c_firstName}
+                helperText={errors.c_firstName}
+              />
+            </div>
 
-      <div style={theme.buttonLayout}>
-        <Button style={theme.button} variant="contained" type="submit">
-          Submit
-        </Button>
-        <span>Thank you for your corporation!!!</span>
-      </div>
-    </form>
+            <div style={theme.input}>
+              <TextField
+                id="c_lastName"
+                name="c_lastName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.c_lastName}
+                type="text"
+                label="Last Name"
+                variant="outlined"
+                error={errors.c_lastName && touched.c_lastName}
+                helperText={errors.c_lastName}
+              />
+            </div>
+
+            <div style={theme.input}>
+              <TextField
+                id="c_email"
+                name="c_email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.c_email}
+                type="email"
+                label="Email"
+                variant="outlined"
+                error={errors.c_email && touched.c_email}
+                helperText={errors.c_email}
+              />
+            </div>
+
+            <div style={theme.input}>
+              <TextField
+                id="c_mobileNumber"
+                name="c_mobileNumber"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.c_mobileNumber}
+                type="phone"
+                label="Mobile Number"
+                variant="outlined"
+                error={errors.c_mobileNumber && touched.c_mobileNumber}
+                helperText={errors.c_mobileNumber}
+              />
+            </div>
+
+            <div style={theme.buttonLayout}>
+              <Button
+                style={theme.button}
+                disabled={
+                  isSubmitting ||
+                  errors.c_firstName ||
+                  errors.c_lastName ||
+                  errors.c_email ||
+                  errors.c_mobileNumber
+                }
+                variant="contained"
+                type="submit"
+              >
+                Submit
+              </Button>
+            </div>
+          </form>
+        )}
+      </Formik>
+    </>
   );
 }
 

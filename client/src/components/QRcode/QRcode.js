@@ -6,7 +6,7 @@ import QRCode from "qrcode.react";
 
 class QR extends Component {
   state = {
-    vendorDetails: [],
+    vendorDetails: {},
   };
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class QR extends Component {
       .get(`/api/businessVendor/${this.props.auth.user.id}`)
       .then((response) => {
         const data = response.data;
-        this.setState({ vendorDetails: data });
+        data && this.setState({ vendorDetails: data });
         console.log(this.state.vendorDetails.QR_link);
       })
       .catch((err) => console.error(err));
@@ -29,7 +29,9 @@ class QR extends Component {
 
     return (
       <>
-        <QRCode value={`${this.state.vendorDetails.QR_link}`} />
+        <QRCode
+          value={`https://protected-fortress-90500.herokuapp.com/${this.state.vendorDetails.QR_link}`}
+        />
         <p style={{ fontFamily: `"Poiret One", cursive`, fontWeight: "bold" }}>
           Right click and "save image as" to download the QR code{" "}
         </p>

@@ -64,48 +64,25 @@ const Graph = ({ data, timesOfDay }) => {
   ];
 
   return (
-    <VictoryChart
+    <>
+      {/* <VictoryChart
       // adding the material theme provided with Victory
       theme={VictoryTheme.material}
       domainPadding={10}
       containerComponent={
         <VictoryContainer
           style={{
-            transform: "scale(0.65)",
+            transform: "scale(1)",
           }}
         />
       }
     >
       <VictoryAxis
-        // X
-        label="Time Of Day"
-        tickValues={timesOfDay}
-        tickFormat={displayTimes}
-        style={{
-          axis: { stroke: "#756f6a" },
-          axisLabel: { fontSize: 10, padding: 20 },
-          ticks: { stroke: "grey", size: 5 },
-          tickLabels: { fontSize: 4, padding: 5 },
-        }}
       />
       <VictoryAxis
-        // Y
-        label="Number of Customer"
-        dependentAxis
-        style={{
-          axis: { stroke: "#756f6a" },
-          axisLabel: { fontSize: 10, padding: 30 },
-          ticks: { stroke: "grey", size: 5 },
-          tickLabels: { fontSize: 10, padding: 5 },
-        }}
-        domain={[0, 100]}
-        // tickFormat={(y) => `$${y / 10}`}
+        domain={[0, 10]}
       />
       <VictoryBar
-        animate={{
-          duration: 2000,
-          onLoad: { duration: 1000 },
-        }}
         cornerRadius={{ topLeft: ({ datum }) => datum.x * 4 }}
         labels={({ datum }) => datum.y}
         style={{ labels: { fill: "black" } }}
@@ -114,7 +91,47 @@ const Graph = ({ data, timesOfDay }) => {
         x="timeOfDay"
         y="visitors"
       />
-    </VictoryChart>
+    </VictoryChart> */}
+
+      <VictoryChart
+        // adding the material theme provided with Victory
+        theme={VictoryTheme.material}
+        domainPadding={20}
+      >
+        <VictoryAxis
+          // X
+          label="Time Of Day"
+          tickValues={timesOfDay}
+          tickFormat={displayTimes}
+          style={{
+            axis: { stroke: "#756f6a" },
+            axisLabel: { fontSize: 10, padding: 20 },
+            ticks: { stroke: "grey", size: 5 },
+            tickLabels: { fontSize: 4, padding: 5 },
+          }}
+        />
+        <VictoryAxis
+          // Y
+          label="Number of Customer"
+          dependentAxis
+          style={{
+            axis: { stroke: "#756f6a" },
+            axisLabel: { fontSize: 10, padding: 30 },
+            ticks: { stroke: "grey", size: 5 },
+            tickLabels: { fontSize: 10, padding: 5 },
+          }}
+        />
+        <VictoryBar
+          animate={{
+            duration: 2000,
+            onLoad: { duration: 1000 },
+          }}
+          data={data}
+          x="timeOfDay"
+          y="visitors"
+        />
+      </VictoryChart>
+    </>
   );
 };
 

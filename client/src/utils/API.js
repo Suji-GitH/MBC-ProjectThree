@@ -23,6 +23,7 @@ export default {
   saveTheme: function (id, themeObject) {
     return axios.post(`/api/mAppTheme/${id}`, themeObject).then((res) => {
       console.log(res.data);
+      return res.data;
     });
   },
 
