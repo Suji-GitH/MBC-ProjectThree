@@ -6,6 +6,7 @@ import { logoutUser } from "../../actions/authActions";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Grid from "@material-ui/core/Grid";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const headerStyles = {
   logo: {
@@ -21,6 +22,11 @@ const headerStyles = {
     position: "absolute",
     top: "28px",
     left: "250px",
+  },
+  businessLogo: {
+    position: "absolute",
+    top: "18px",
+    right: "160px",
   },
   businessName: {
     fontFamily: "'Poiret One', cursive",
@@ -86,6 +92,7 @@ class Dashboard extends Component {
         <Grid item xs={4}>
           <div style={headerStyles.businessName}>
             <h4>
+              <AccountCircleIcon style={headerStyles.businessLogo} />
               <b>Welcome,</b> {user.business_vendor.split(" ")[0]}
             </h4>
           </div>

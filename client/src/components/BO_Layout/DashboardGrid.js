@@ -13,12 +13,12 @@ const dashboardStyles = {
     textAlign: "center",
   },
   qrGrid: {
-    height: "250px",
+    height: "270px",
     margin: "0px 20px 20px 15px",
     border: "3px dashed mediumpurple",
   },
   instGrid: {
-    height: "300px",
+    height: "280px",
     margin: "0px 20px 0px 15px",
     border: "3px dashed deepskyblue",
   },
@@ -36,6 +36,7 @@ const dashboardStyles = {
     textAlign: "left",
     display: "grid",
     gridGap: "1em",
+    fontWeight: "bold",
   },
   link: {
     textDecoration: "none",
@@ -134,7 +135,14 @@ function DashboardGrid({
             {customerData ? (
               <Graph data={customerData} timesOfDay={timesOfDay} />
             ) : (
-              "Loading..."
+              <p
+                style={{
+                  fontFamily: `"Poiret One", cursive`,
+                  fontWeight: "bold",
+                }}
+              >
+                "Loading...Refresh the page if it's taking too long"
+              </p>
             )}
           </Paper>
         </Grid>

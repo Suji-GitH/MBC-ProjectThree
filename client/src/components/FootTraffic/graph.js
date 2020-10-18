@@ -1,5 +1,12 @@
 import React from "react";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryTheme,
+  VictoryLabel,
+  VictoryContainer,
+} from "victory";
 
 /* const sampleData = [
   { timeOfDay: 0, visitors: 0 },
@@ -30,49 +37,83 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
 
 const Graph = ({ data, timesOfDay }) => {
   const displayTimes = [
-    "12AM",
-    "1AM",
-    "2AM",
-    "3AM",
-    "4AM",
-    "5AM",
-    "6AM",
-    "7AM",
-    "8AM",
-    "9AM",
-    "10AM",
-    "11AM",
-    "12PM",
-    "1PM",
-    "2PM",
-    "3PM",
-    "4PM",
-    "5PM",
-    "6PM",
-    "7PM",
-    "8PM",
-    "9PM",
-    "10PM",
-    "11PM",
+    "12am",
+    "1am",
+    "2am",
+    "3am",
+    "4am",
+    "5am",
+    "6am",
+    "7am",
+    "8am",
+    "9am",
+    "10am",
+    "11am",
+    "12pm",
+    "1pm",
+    "2pm",
+    "3pm",
+    "4pm",
+    "5pm",
+    "6pm",
+    "7pm",
+    "8pm",
+    "9pm",
+    "10pm",
+    "11pm",
   ];
 
   return (
     <VictoryChart
       // adding the material theme provided with Victory
       theme={VictoryTheme.material}
-      domainPadding={20}
+      domainPadding={10}
+      containerComponent={
+        <VictoryContainer
+          style={{
+            transform: "scale(0.65)",
+          }}
+        />
+      }
     >
       <VictoryAxis
         // X
+        label="Time Of Day"
         tickValues={timesOfDay}
         tickFormat={displayTimes}
+        style={{
+          axis: { stroke: "#756f6a" },
+          axisLabel: { fontSize: 10, padding: 20 },
+          ticks: { stroke: "grey", size: 5 },
+          tickLabels: { fontSize: 4, padding: 5 },
+        }}
       />
       <VictoryAxis
         // Y
+        label="Number of Customer"
         dependentAxis
-        // tickFormat={(x) => (`$${x / 1000}k`)}
+        style={{
+          axis: { stroke: "#756f6a" },
+          axisLabel: { fontSize: 10, padding: 30 },
+          ticks: { stroke: "grey", size: 5 },
+          tickLabels: { fontSize: 10, padding: 5 },
+        }}
+        domain={[0, 100]}
+        // tickFormat={(y) => `$${y / 10}`}
       />
-      <VictoryBar data={data} x="timeOfDay" y="visitors" />
+      <VictoryBar
+        animate={{
+          duration: 2000,
+          onLoad: { duration: 1000 },
+        }}
+        cornerRadius={{ topLeft: ({ datum }) => datum.x * 4 }}
+        labels={({ datum }) => datum.y}
+        style={{ labels: { fill: "black" } }}
+        labelComponent={<VictoryLabel dy={30} />}
+        data={data}
+        x="timeOfDay"
+        y="visitors"
+      />
     </VictoryChart>
   );
 };

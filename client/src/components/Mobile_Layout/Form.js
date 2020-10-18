@@ -2,36 +2,13 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-function Form({ theme }) {
-  /* const [selectedBackgroundColor, setSelectedBackgroundColor] = useState(
-    "#ccc"
-  );
-  const [selectedBtnColor, setSelectedBtnColor] = useState("#ccc");
-  const [selectedBtnTxtColor, setSelectedBtnTxtColor] = useState("black");
-
-  {
-  "form": {
-    "backgroundColor": "#f47373",
-    "height": "100vh"
+function Form({
+  auth: {
+    user: { id },
   },
-  "formLayout": {
-    "textAlign": "center",
-    "margin": "5em 1em 0"
-  },
-  "input": {
-    "margin": "1em",
-    "display": "grid"
-  },
-  "buttonLayout": {
-    "margin": "4em 2em 0 1em",
-    "display": "grid"
-  },
-  "button": {
-    "backgroundColor": "#37d67a",
-    "color": "black"
-  }
-}
-
+  theme,
+}) {
+  /* 
   const mobileAppStyles = {
     form: {
       backgroundColor: `${selectedBackgroundColor}`,
@@ -135,9 +112,18 @@ function Form({ theme }) {
         <Button style={theme.button} variant="contained" type="submit">
           Submit
         </Button>
+        <span>Thank you for your corporation!!!</span>
       </div>
     </form>
   );
 }
 
-export default Form;
+Form.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Form);

@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import InfoRoundedIcon from "@material-ui/icons/InfoRounded";
 
-function Header({ logo }) {
-  const infoStyle = {
-    position: "absolute",
-    top: "15px",
-    padding: "1em",
-    right: "20px",
+function Header({ logo, theme }) {
+  const mHeaderStyle = {
+    info: {
+      position: "absolute",
+      top: "15px",
+      padding: "1em",
+      right: "20px",
+    },
   };
 
   const openInNewTab = (url) => {
@@ -18,12 +19,12 @@ function Header({ logo }) {
 
   return (
     <>
-      <Link tag={Link} to="/MBC-React-Portfolio/">
+      <div style={theme.headerLayout}>
         <img src={logo} alt="businessLogo" />
-      </Link>
+      </div>
 
       <IconButton
-        style={infoStyle}
+        style={mHeaderStyle.info}
         onClick={() => {
           openInNewTab(
             "https://www.dhhs.vic.gov.au/record-keeping-contact-tracing-covid-19"

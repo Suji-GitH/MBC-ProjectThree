@@ -27,7 +27,7 @@ function UserApp({
 
   return (
     <>
-      {logo && <Header logo={logo} />}
+      {logo && <Header logo={logo} theme={theme} />}
       {theme && <CustomerForm theme={theme} />}
     </>
   );

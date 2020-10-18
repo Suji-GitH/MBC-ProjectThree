@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Tippy from "@tippyjs/react";
-import { BlockPicker } from "react-color";
+import { TwitterPicker } from "react-color";
 import QR from "../QRcode/QRcode";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -25,6 +25,18 @@ const dashboardStyles = {
     height: "300px",
     margin: "0px 20px 0px 15px",
     border: "3px dashed deepskyblue",
+    display: "grid",
+  },
+  themeBtn: {
+    backgroundColor: "Transparent",
+    fontFamily: "'Poiret One', cursive",
+    fontWeight: "bold",
+  },
+  fileBtn: {
+    color: "dodgerblue",
+    fontFamily: "'Poiret One', cursive",
+    fontWeight: "bold",
+    padding: "20px 0px 0px 20px",
   },
   appGrid: {
     height: "100%",
@@ -61,9 +73,13 @@ function ThemeGrid({
   const [logo, setLogo] = useState();
 
   const mobileAppStyles = {
+    headerLayout: {
+      backgroundColor: `${selectedBackgroundColor}`,
+    },
     form: {
       backgroundColor: `${selectedBackgroundColor}`,
       height: "100vh",
+      padding: "1em",
     },
     formLayout: {
       textAlign: "center",
@@ -90,7 +106,7 @@ function ThemeGrid({
         t_style: JSON.stringify(mobileAppStyles),
       });
     } catch (err) {
-      console.error("Öpps! : ", err);
+      console.error("Opps! : ", err);
     }
   };
 
@@ -130,8 +146,9 @@ function ThemeGrid({
               <Tippy
                 interactive={true}
                 placement={"right"}
+                arrow={false}
                 content={
-                  <BlockPicker
+                  <TwitterPicker
                     color={selectedBackgroundColor}
                     onChangeComplete={(color) =>
                       setSelectedBackgroundColor(color.hex)
@@ -139,25 +156,31 @@ function ThemeGrid({
                   />
                 }
               >
-                <button>Select Background Color</button>
+                <Button style={dashboardStyles.themeBtn} variant="contained">
+                  Select Background Color
+                </Button>
               </Tippy>
               <Tippy
                 interactive={true}
                 placement={"right"}
+                arrow={false}
                 content={
-                  <BlockPicker
+                  <TwitterPicker
                     color={selectedBtnColor}
                     onChangeComplete={(color) => setSelectedBtnColor(color.hex)}
                   />
                 }
               >
-                <button>Select Button Color</button>
+                <Button style={dashboardStyles.themeBtn} variant="contained">
+                  Select Button Color
+                </Button>
               </Tippy>
               <Tippy
                 interactive={true}
                 placement={"right"}
+                arrow={false}
                 content={
-                  <BlockPicker
+                  <TwitterPicker
                     color={selectedBtnTxtColor}
                     onChangeComplete={(color) =>
                       setSelectedBtnTxtColor(color.hex)
@@ -165,13 +188,27 @@ function ThemeGrid({
                   />
                 }
               >
-                <button>Select Button Text Color</button>
+                <Button style={dashboardStyles.themeBtn} variant="contained">
+                  Select Button Text Color
+                </Button>
               </Tippy>
-              <button disabled={!logo} onClick={saveTheme}>
+              <Button
+                style={dashboardStyles.themeBtn}
+                disabled={!logo}
+                onClick={saveTheme}
+                variant="contained"
+              >
+                {" "}
                 Save Theme
-              </button>
-
-              <input type="file" onChange={onFileChange} />
+              </Button>
+              {/* <button disabled={!logo} onClick={saveTheme}>
+                Save Theme
+              </button> */}
+              <input
+                style={dashboardStyles.fileBtn}
+                type="file"
+                onChange={onFileChange}
+              />
             </Paper>
           </Grid>
         </Grid>
