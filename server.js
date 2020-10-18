@@ -21,21 +21,25 @@ app.use(express.static("public"));
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: false,
   })
 );
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.use(bodyParser.json());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trace", 
-  {
+mongoose
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/trace", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false
-  }
-)
-.then(() => console.log("MongoDB successfully connected"))
-.catch(err => console.log(err));
+    useFindAndModify: false,
+  })
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch((err) => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -50,5 +54,5 @@ app.use("/api/businessVendor", businessVendor);
 app.use("/api/mAppTheme", mAppTheme);
 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}`);
+  console.log(`App running on port ${PORT}`);
 });
