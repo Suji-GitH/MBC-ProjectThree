@@ -6,10 +6,11 @@ import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 import HeroLanding from "../BO_Layout/HeroLanding";
 import Footer from "../BO_Layout/Footer";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Background from "../assets/img/contact_tracing.jpg";
 
 const authStyles = {
   grid: {
@@ -19,34 +20,49 @@ const authStyles = {
   subGrid: {
     display: "flex",
     justifyContent: "center",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   paper: {
+    backgroundImage: `url(${Background})`,
     margin: "3em",
     height: "90%",
     backgroundColor: "white",
     border: "solid",
-    borderStyle: "dashed"
+    borderStyle: "dashed",
   },
   form: {
-    position: "relative",
-    top: "30%"
+    backgroundColor: "rgba(255, 255, 255, 0.85)",
+    height: "100%",
+    padding: "1em",
+    display: "grid",
   },
   input: {
     margin: "1em",
     textAlign: "center",
-    display: "grid"
+    display: "grid",
   },
-  button: {
+  buttonGrid: {
     margin: "1em",
     textAlign: "center",
-    display: "grid"
+    display: "grid",
+  },
+  button: {
+    backgroundColor: "aquamarine",
+    fontFamily: "'Poiret One', cursive",
+    fontWeight: "bold",
+    fontSize: "larger",
+    height: "60px",
+    // "&:hover": {
+    //   backgroundColor: "aquamarine",
+    // },
   },
   link: {
+    fontFamily: "'Poiret One', cursive",
     textDecoration: "none",
     color: "black",
     marginTop: "10px",
-  }
+    fontWeight: "bold",
+  },
 };
 
 class Login extends Component {
@@ -55,7 +71,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
     };
   }
 
@@ -73,21 +89,21 @@ class Login extends Component {
 
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
     this.props.loginUser(userData);
@@ -98,59 +114,76 @@ class Login extends Component {
 
     return (
       <>
-      <div>
-        <Grid style={authStyles.grid} container spacing={3}>
-          <Grid style={authStyles.subGrid} item xs={6}>
-            <HeroLanding />
-          </Grid>
-          <Grid item xs={6}>
-            <Paper style={authStyles.paper} variant="outlined" elevation={9}>
-              <form style={authStyles.form} noValidate onSubmit={this.onSubmit}>
-                <div style={authStyles.input}>
-                <TextField 
-                onChange={this.onChange}
-                id="email"
-                type="email"
-                label="Email" 
-                variant="outlined"
-                className={classnames("", {
-                  invalid: errors.email || errors.emailnotfound
-                })}
-                 />
-                <span style={{color: "crimson"}}>
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
-                </div>
+        <div>
+          <Grid style={authStyles.grid} container spacing={3}>
+            <Grid style={authStyles.subGrid} item xs={6}>
+              <HeroLanding />
+            </Grid>
+            <Grid item xs={6}>
+              <Paper style={authStyles.paper} variant="outlined" elevation={9}>
+                <form
+                  style={authStyles.form}
+                  noValidate
+                  onSubmit={this.onSubmit}
+                >
+                  <di></di>
+                  <div></div>
+                  <div style={authStyles.input}>
+                    <TextField
+                      onChange={this.onChange}
+                      value={this.state.email}
+                      error={errors.email}
+                      id="email"
+                      type="email"
+                      label="Email"
+                      variant="outlined"
+                      className={classnames("", {
+                        invalid: errors.email || errors.emailnotfound,
+                      })}
+                    />
+                    <span style={{ color: "crimson" }}>
+                      {errors.email}
+                      {errors.emailnotfound}
+                    </span>
+                  </div>
 
-                <div style={authStyles.input}>
-                <TextField 
-                onChange={this.onChange}
-                id="password"
-                type="password"
-                label="Password" 
-                variant="outlined"
-                className={classnames("", {
-                  invalid: errors.password || errors.passwordincorrect
-                })}
-                 />
-                <span style={{color: "crimson"}}>
-                  {errors.password}
-                  {errors.passwordnotfound}
-                </span>
-                </div>
-                
-                <div style={authStyles.button}>
-                <Button variant="contained" type="submit">Login</Button>
-                <Link style={authStyles.link} tag={Link} to="/">REGISTER</Link>
-                </div>
+                  <div style={authStyles.input}>
+                    <TextField
+                      onChange={this.onChange}
+                      value={this.state.password}
+                      error={errors.password}
+                      label="Password"
+                      variant="outlined"
+                      id="password"
+                      type="password"
+                      className={classnames("", {
+                        invalid: errors.password || errors.passwordincorrect,
+                      })}
+                    />
+                    <span style={{ color: "crimson" }}>
+                      {errors.password}
+                      {errors.passwordincorrect}
+                    </span>
+                  </div>
 
-              </form>
-            </Paper>
+                  <div style={authStyles.buttonGrid}>
+                    <Button
+                      style={authStyles.button}
+                      variant="contained"
+                      type="submit"
+                    >
+                      Login
+                    </Button>
+                    <Link style={authStyles.link} tag={Link} to="/">
+                      REGISTER
+                    </Link>
+                  </div>
+                </form>
+              </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-        <Footer />
-      </div>
+          <Footer />
+        </div>
       </>
     );
   }
@@ -159,15 +192,12 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(Login);
+export default connect(mapStateToProps, { loginUser })(Login);

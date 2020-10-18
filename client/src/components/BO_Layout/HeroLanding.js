@@ -1,29 +1,28 @@
 import React, { Component } from "react";
 
-const headerStyle = {
-  fontFamily: "'Monoton', cursive",
-  fontSize: "100px",
-  textAlign: "center",
-  marginBottom: "unset"
+const heroStyle = {
+  header: {
+    fontFamily: "'Monoton', cursive",
+    fontWeight: "500",
+    fontSize: "150px",
+    textAlign: "center",
+    marginBottom: "unset",
+  },
+  para: {
+    fontFamily: "'Poiret One', cursive",
+    fontSize: "25px",
+    textAlign: "right",
+  },
 };
-
-const paraStyle = {
-  fontFamily: "'Poiret One', cursive",
-  fontSize: "large",
-  textAlign: "right"
-};
-
 
 class Landing extends Component {
   render() {
     return (
-      <>
       <div>
-      <h1 style={headerStyle}>Trace</h1>
-      <p style={paraStyle}>Create/Manage customized contact</p> 
-      <p style={paraStyle}>tracing form for your business</p>
+        <h1 style={heroStyle.header}>Trace</h1>
+        <p style={heroStyle.para}>Create/Manage customized contact</p>
+        <p style={heroStyle.para}>tracing form for your business</p>
       </div>
-      </>
     );
   }
 }

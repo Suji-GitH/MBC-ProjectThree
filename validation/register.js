@@ -5,14 +5,16 @@ module.exports = function validateRegisterInput(data) {
   let errors = {};
 
   // Convert empty fields to an empty string so we can use validator functions
-  data.business_vendor = !isEmpty(data.business_vendor) ? data.business_vendor : "";
+  data.business_vendor = !isEmpty(data.business_vendor)
+    ? data.business_vendor
+    : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
   // business_vendor checks
   if (Validator.isEmpty(data.business_vendor)) {
-    errors.business_vendor = "business_vendor field is required";
+    errors.business_vendor = "Business Name field is required";
   }
 
   // Email checks
@@ -41,6 +43,6 @@ module.exports = function validateRegisterInput(data) {
 
   return {
     errors,
-    isValid: isEmpty(errors)
+    isValid: isEmpty(errors),
   };
 };
