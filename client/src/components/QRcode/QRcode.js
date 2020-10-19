@@ -30,7 +30,7 @@ class QR extends Component {
     return (
       <>
         <QRCode
-          value={`https://protected-fortress-90500.herokuapp.com${this.state.vendorDetails.QR_link}`}
+          value={`https://protected-fortress-90500.herokuapp.com${this.state.vendorDetails}`}
         />
         <p style={{ fontFamily: `"Poiret One", cursive`, fontWeight: "bold" }}>
           Right click and "save image as" to download the QR code{" "}
