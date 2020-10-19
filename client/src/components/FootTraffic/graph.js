@@ -128,6 +128,7 @@ const Graph = ({ data, timesOfDay }) => {
             ticks: { stroke: "grey", size: 5 },
             tickLabels: { fontSize: 10, padding: 5 },
           }}
+          domain={[0, 10]}
         />
         <VictoryBar
           animate={{
