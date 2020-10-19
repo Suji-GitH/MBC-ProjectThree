@@ -25,10 +25,6 @@ app.use(
   })
 );
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
 app.use(bodyParser.json());
 
 mongoose
@@ -52,6 +48,10 @@ app.use("/api/adminUsers", adminUsers);
 app.use("/api/customerForm", customerForm);
 app.use("/api/businessVendor", businessVendor);
 app.use("/api/mAppTheme", mAppTheme);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);

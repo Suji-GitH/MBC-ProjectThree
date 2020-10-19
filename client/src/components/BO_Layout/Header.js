@@ -85,7 +85,7 @@ class Dashboard extends Component {
               tag={Link}
               to={`/business/${user.id}`}
             >
-              Test - Mobile
+              Mobile (Demo)
             </Link>
           </Breadcrumbs>
         </Grid>

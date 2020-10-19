@@ -1,45 +1,64 @@
 # ProjectThree
 
-Concept - Problem and solution
+## Application & Repository Link
 
-Initially when you learn the boot strap it was like going from square to a cube in terms of styling
+###### [Application Link](https://dashboard.heroku.com/apps/protected-fortress-90500)
 
-but as you go further in the project you start using different css framework  to improve the styling and make it more unique but even than you still tend to customise the look and feel. 
+###### [Repository Link](https://github.com/Suji-GitH/MBC-ProjectThree)
 
-so the concept is having UI interface for creating your own/organizations custom css framework. 
+## Content
 
-Benefits 
-- Keeps the code clean without having big css files 
-- easier to handle with interns and someone who might not be into UI/UX
-- easier to maintain consistent style changes in a large team bases
-- users dont need to dig around to get the css styling you have implemented 
-- can work at the similar time 
+- [Overview](#Overview)
+- [Acceptance Criteria](#Acceptance-Criteria)
+- [Application Screens](#Application-Screens)
+- [Installation](#Installation)
+- [Credits](#Credits)
 
-- You be able to create a project
-- Create Team/profile
-- Set Super admin permission (who can see the custom css for projects, who can assign/remove team menembers, create team)
-- dashboard for different members, admin sees all teams, team can only see the groups they are in
-- default cdn link 
-- Ui interface to change your framework 
-- preview of the control 
-- Review notification to accept changes 
-- Font selector 
-- Favicon 
+## Overview
 
-Presentation idea
-- show naked html page with link included in the html
-- once you have made changes in the Ui, refresh the page to show the difference
+```
+In this activity, you'll create a new React-based Google Books Search app. This assignment requires you to create React components, work with helper/util functions, and utilize React lifecycle methods to query and display books based on user searches. You'll also use Node, Express and MongoDB so that users can save books to review or purchase later.
+```
 
+## Acceptance Criteria
 
-Flow
-- add link to html
-- Super Admin create a group on "" adds project lead - sends email
-- Project lead creates teams, and adds users
-- users and project lead customises the CSS framework - Maybe get project lead to approve? 
+This application requires at minimum 2 pages:
 
-CSS font
-font-family: 'Fredericka the Great', cursive;
-font-family: 'Monoton', cursive;
-font-family: 'Poiret One', cursive;
+- Search - User can search for books via the Google Books API and render them here. User has the option to "View" a book, bringing them to the book on Google Books, or "Save" a book, saving it to the Mongo database.
 
-user application url http://localhost:3000/business/%7Bid%7D/theme/%7BthemeId%7D/
+- Saved - Renders all books saved to the Mongo database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the Mongo database.
+
+At a minimum, books should have each of the following fields:
+
+- title - Title of the book from the Google Books API
+- authors - The books's author(s) as returned from the Google Books API
+- description - The book's description as returned from the Google Books API
+- image - The Book's thumbnail image as returned from the Google Books API
+- link - The Book's information link as returned from the Google Books API
+
+## Installation
+
+1. Download/Clone this GitHub repository.
+2. Install dependencies via npm i.
+3. Run the app through node.js by npm start.
+
+## Application-Screens
+
+###### App Screenshots
+
+Landing Page
+<img src = "./client/public/Screenshots/LandingPage.jpg">
+
+Search Book
+<img src = "./client/public/Screenshots/Search.jpg">
+
+Saved Books
+<img src = "./client/public/Screenshots/SaveBooks.jpg">
+
+<img src = "./client/public/Screenshots/SaveBooks1.jpg">
+
+## Credits
+
+- Heroku
+- MERN
+- Bootstrap
