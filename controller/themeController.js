@@ -25,6 +25,7 @@ module.exports = {
       });
   },
   findThemeById: function (req, res) {
+    console.log(req.params);
     db.Business_Owner.findById({ _id: req.params.id })
       .populate("app_theme")
       .select("app_theme -_id")
