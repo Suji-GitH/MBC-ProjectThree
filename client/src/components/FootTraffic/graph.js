@@ -97,6 +97,14 @@ const Graph = ({ data, timesOfDay }) => {
         // adding the material theme provided with Victory
         theme={VictoryTheme.material}
         domainPadding={20}
+        containerComponent={
+          <VictoryContainer
+            style={{
+              marginLeft: "30%;",
+              width: "50%",
+            }}
+          />
+        }
       >
         <VictoryAxis
           // X

@@ -26,8 +26,14 @@ const dashboardStyles = {
     height: "100%",
     marginRight: "20px",
     border: "3px dashed lightgreen",
+    display: "flex",
   },
   header: {
+    fontFamily: "'Monoton', cursive",
+    fontWeight: "500",
+  },
+  graphHeader: {
+    margin: "20px 0px 0px 100px",
     fontFamily: "'Monoton', cursive",
     fontWeight: "500",
   },
@@ -131,7 +137,7 @@ function DashboardGrid({
 
         <Grid item xs={8}>
           <Paper style={dashboardStyles.graphGrid} elevation={3}>
-            <h3 style={dashboardStyles.header}>Store Foot Traffic:</h3>
+            <h3 style={dashboardStyles.graphHeader}>Store Foot Traffic:</h3>
             {customerData ? (
               <Graph data={customerData} timesOfDay={timesOfDay} />
             ) : (

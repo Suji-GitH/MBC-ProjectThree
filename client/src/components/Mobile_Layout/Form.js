@@ -17,7 +17,7 @@ function Form({
   return (
     <>
       {showSuccess ? (
-        <SnackBar show>Woot! User details stored successfully</SnackBar>
+        <SnackBar show>Thank you for your corporation :)</SnackBar>
       ) : null}
       <Formik
         initialValues={{
