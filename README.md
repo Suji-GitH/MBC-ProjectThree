@@ -13,28 +13,28 @@
 - [Application Screens](#Application-Screens)
 - [Installation](#Installation)
 - [Credits](#Credits)
+- [Future Development](#Future-Development)
+- [Testing](#Testing)
 
 ## Overview
 
 ```
-In this activity, you'll create a new React-based Google Books Search app. This assignment requires you to create React components, work with helper/util functions, and utilize React lifecycle methods to query and display books based on user searches. You'll also use Node, Express and MongoDB so that users can save books to review or purchase later.
+Final Project for full stack full-stack web developer Boot Camp course.
 ```
 
 ## Acceptance Criteria
 
-This application requires at minimum 2 pages:
-
-- Search - User can search for books via the Google Books API and render them here. User has the option to "View" a book, bringing them to the book on Google Books, or "Save" a book, saving it to the Mongo database.
-
-- Saved - Renders all books saved to the Mongo database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the Mongo database.
-
-At a minimum, books should have each of the following fields:
-
-- title - Title of the book from the Google Books API
-- authors - The books's author(s) as returned from the Google Books API
-- description - The book's description as returned from the Google Books API
-- image - The Book's thumbnail image as returned from the Google Books API
-- link - The Book's information link as returned from the Google Books API
+- Must use ReactJS in some way
+- Must use a Node and Express Web Server
+- Must be backed by MongoDB database with Mongoose ORM
+- Must have both GET and POST routes for retrieving and adding new data
+- Must deploy this application using Heroku with data.
+- Must utilize at least 2 new libraries, packages, or technologies
+- Must allow for or involve the authentication of users in some way
+- Must have a polished front end/UI
+- Must have a folder structure that meets the MVC paradigm
+- Must meet good quality coding standards (indentation, scoping, naming)
+- Must protect API keys in Node with environment variables
 
 ## Installation
 
@@ -46,19 +46,53 @@ At a minimum, books should have each of the following fields:
 
 ###### App Screenshots
 
-Landing Page
-<img src = "./client/public/Screenshots/LandingPage.jpg">
+Authentication Page
+<img src = "./client/public/assets/Screenshots/AuthReg.jpg">
 
-Search Book
-<img src = "./client/public/Screenshots/Search.jpg">
+<img src = "./client/public/assets/Screenshots/AuthLog.jpg">
 
-Saved Books
-<img src = "./client/public/Screenshots/SaveBooks.jpg">
+Dashboard
+<img src = "./client/public/assets/Screenshots/Dashboard.jpg">
 
-<img src = "./client/public/Screenshots/SaveBooks1.jpg">
+Theme Builder
+<img src = "./client/public/assets/Screenshots/Theme.jpg">
+
+<img src = "./client/public/assets/Screenshots/Theme1.jpg">
+
+Customer List
+<img src = "./client/public/assets/Screenshots/CustomerList.jpg">
+
+Contact Tracing Form
+<img src = "./client/public/assets/Screenshots/UserApp.jpg">
 
 ## Credits
 
 - Heroku
 - MERN
-- Bootstrap
+- Material Ui
+- Victory
+- React Color
+- TippyJs
+- Passport
+- qrcode.react
+
+## Future Development
+
+Business Portal:
+
+- Complex Chats
+- Mobile Responsive
+- Meet Dhhs Compliance
+- Further Customisation for the user application
+- UX for handing errors and validations
+
+Customer Facing Application:
+
+- Convert to Mobile App
+- Add multiple users
+- Pay Feature
+- Review Feature
+
+## Testing
+
+Testing was conducted manually and tested against the user stories. **_Test Cases will be added in the future_**
