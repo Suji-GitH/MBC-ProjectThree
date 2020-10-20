@@ -2,7 +2,7 @@
 
 ## Application & Repository Link
 
-###### [Application Link](https://dashboard.heroku.com/apps/protected-fortress-90500)
+###### [Application Link](https://protected-fortress-90500.herokuapp.com/)
 
 ###### [Repository Link](https://github.com/Suji-GitH/MBC-ProjectThree)
 
